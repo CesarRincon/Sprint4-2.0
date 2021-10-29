@@ -1,10 +1,10 @@
 {% extends "servicios.html" %}
-{% block title %}Visualizar usuario{% endblock %}
+{% block title %}Visualizar Usuarios{% endblock %}
 {% block contents %}
 
 {% if session.rol == "SuperAdmin" or session.rol == "Admin" %}
     <table id="tabla">
-        <h1>LISTA DE USUARIOS {{long}}</h1>
+        <h1>Lista de Usuarios {{long}}</h1>
         <br>
         <thead>         
             <tr>

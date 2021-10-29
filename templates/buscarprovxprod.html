@@ -1,5 +1,5 @@
 {% extends "servicios.html" %}
-{% block title %}busqueda de proveedor por producto especifico{% endblock %}
+{% block title %}Busqueda de Proveedor por Producto Especifico{% endblock %}
 {% block contents %}
 {% if session.rol == "SuperAdmin" or session.rol == "UsuarioFinal" %}
 <div align="center">
@@ -8,7 +8,7 @@
                 
                 <tr>
                     <td><label for="buscar"> Buscar: </label></td>
-                    <td><input type="search" name="bp" id=""></td>
+                    <td><input type="search" name="bp" id="" placeholder="Id Marca"></td>
                 </tr>
             </div>
     </form>  

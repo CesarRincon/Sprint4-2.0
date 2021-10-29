@@ -1,11 +1,11 @@
 {% extends "servicios.html" %}
-{% block title %}Registro de usuarios{% endblock %}
+{% block title %}Registro de Usuarios{% endblock %}
 {% block contents %}
 {% if session.rol == "SuperAdmin" or session.rol == "Admin" %}
     <div>
         <form action="" method="post">
             {{ frm.hidden_tag() }}
-            <h1>CREACIÓN DE USUARIOS</h1>
+            <h1>Creación de Usuario</h1>
             <table>
                 <p>
                     <tr><td>{{ frm.usuario.label }}</td>

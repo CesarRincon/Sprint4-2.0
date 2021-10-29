@@ -1,11 +1,11 @@
 {% extends "servicios.html" %}
-{% block title %}Busqueda de usuarios{% endblock %}
+{% block title %}Busqueda de Usuarios{% endblock %}
 {% block contents %}
     {% if session.rol == "SuperAdmin" or session.rol == "Admin" %}
     <div class="centrado">
         <form action="" method="post" onsubmit="return confirmarBorrado()">
             {{ frm.hidden_tag() }}
-            <h1>BUSQUEDA DE USUARIOS</h1>
+            <h1>Busqueda de Usuarios</h1>
             <p>
                 {{ frm.ubusqueda.label }}
                 {{ frm.ubusqueda }}

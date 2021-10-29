@@ -3,7 +3,7 @@
 {% block contents %}
 
 {% if session.rol == "SuperAdmin" %}
-    <h1>LISTA DE MARCAS {{long}}</h1>
+    <h1>Lista de Marcas {{long}}</h1>
     <form action="" method="post" onsubmit="return confirmarBorrado()">
         {{ frm.hidden_tag() }}
          {{ frm.enviar }}  {{ frm.editar }}  {{ frm.eliminar }}

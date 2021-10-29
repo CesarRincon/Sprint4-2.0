@@ -15,11 +15,8 @@ rol=""
 pwdor=""
 rutadb="inventario.db"
 #ruta inicial
-@app.route("/")
-def inicio():
-    global nom,rol
-    nom=""
-    rol=""
+
+def inicializarv():
     provee_buscado2 = ""
     row2=[]
     rowl=rowp=[]
@@ -37,9 +34,17 @@ def inicio():
     row=[]
     rowbp=[]
     longbp=0    
-    sw=0
     rowsl=[]
     longl=0
+
+
+@app.route("/")
+def inicio():
+    global nom,rol
+    nom=""
+    rol=""
+    inicializarv()
+    sw=0
     nombreante=""
     return render("inicio.html",nom=nom,rol=rol)
 
@@ -48,6 +53,7 @@ def salir():
         global nom,rol
         nom=""
         rol=""
+        inicializarv()
         session.clear()
         return redirect("/ingreso")
 
@@ -55,6 +61,7 @@ def salir():
 @app.route("/usuarios/<id_usuario>", methods=["GET"])
 def info_usuario(id_usuario):
     if 'usuario' in session:
+        inicializarv()
         with sqlite3.connect(rutadb) as con:
             con.row_factory=sqlite3.Row #lista de diccionario
             cur=con.cursor()
@@ -70,6 +77,7 @@ def info_usuario(id_usuario):
 @app.route("/ingreso",methods=["GET", "POST"])
 def ingreso():
     global nom,rol
+    inicializarv()
     #si el metodo es get envia al login, significa que no se ha logueado
     if request.method=="GET":
         return render("login.html")
@@ -104,6 +112,7 @@ def ingreso():
 @app.route("/servicios", methods=["GET"])
 def servicios():
     global nom,rol
+    inicializarv()
     if 'usuario' in session:
         return render("servicios.html",nom=nom,rol=rol)
     else:
@@ -113,6 +122,7 @@ def servicios():
 @app.route("/usuario/registro",methods=["GET","POST"])
 def registrar():
     global nom,rol
+    inicializarv()
     if 'usuario' in session:
         frm=Registro()
         if frm.validate_on_submit():
@@ -168,6 +178,7 @@ def registrar():
 @app.route("/usuarios/busqueda", methods=["GET","POST"])
 def busuarios():
     if 'usuario' in session:
+        inicializarv()
         global pwdor
         frm=Buscar()
         frm1=Registro()
@@ -214,6 +225,7 @@ def busuarios():
 #eliminar
 @app.route("/usuario/delete", methods=["POST"])
 def eusuario():
+    inicializarv()
     if 'usuario' in session:
         frm1=Registro()
         frm=Buscar()
@@ -242,9 +254,7 @@ def eusuario():
 @app.route("/usuario/update", methods=["POST"])
 def uusuario():
     global nom,pwdor
-    #//////////////////////////////
-    #/////Revisar esta logica/////
-    #/////////////////////////////
+    inicializarv()
     if 'usuario' in session:
         frm=Buscar()
         frm1=Registro()
@@ -326,6 +336,7 @@ def uusuario():
 #Cambiar Contraseña
 @app.route("/usuario/cmbpassword", methods=["POST","GET"])
 def cbiopassword():
+    inicializarv()
     if 'usuario' in session:
         frm=Chpass()
         if frm.validate_on_submit():
@@ -363,6 +374,7 @@ def cbiopassword():
 #Ruta para renderizar pagina de visualizar usuarios
 @app.route("/usuarios/visualizar", methods=["GET"])
 def vusuarios():
+    inicializarv()
     if 'usuario' in session:
         #conecta a la base de datos
         with sqlite3.connect(rutadb) as con:
@@ -391,6 +403,7 @@ def dash():
 
 @app.route("/servicios/calificar", methods=["GET","POST"])
 def calificar():
+    inicializarv()
     if 'usuario' in session:
         frm=Calificar()
         #////////////////
@@ -425,6 +438,7 @@ def calificar():
 
 @app.route("/servicios/calificar/listar", methods=["GET"])
 def listarCalificiacion():
+    inicializarv()
     if 'usuario' in session:
          #conecta a la base de datos
         with sqlite3.connect(rutadb) as con:
@@ -446,6 +460,7 @@ def listarCalificiacion():
 @app.route("/crear/proveedor", methods = ["GET", "POST"])
 def crearProve():
     global nom
+    
     if 'usuario' in session:
         if request.method == "GET":
             return render("crearProvee.html", nom=nom, rol=rol)
