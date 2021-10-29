@@ -1013,7 +1013,7 @@ def dmarcas():
                 if row:
                     frm.nom_linea.data=""
                     cur.execute("delete from linea where nom_linea=?",[nombre])
-                    flash("La marca eliminada exitosamente")
+                    flash("Marca eliminada exitosamente")
                     return redirect("/marca/eliminar")
                 else:
                     flash("La marca no se encuentra en la base de datos")
