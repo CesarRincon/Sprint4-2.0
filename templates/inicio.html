@@ -1,0 +1,37 @@
+{% extends "base_bar_sup.html" %}
+
+{% block title %}Bienvenidos a Volkswagen{% endblock %}
+{% block menu %}
+
+    
+<nav class="navbar">
+    <div id="sidemenu" class="menu-collapsed">
+        <!-- HEADER MENU -->
+        <div id="header" class="clearfix">
+            <div id="title"> <span>Menu</span> </div>
+            <div id="menu-btn">
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+            </div>
+        </div>
+
+        <!-- ITEMS MENU -->
+
+        <div id="menu-items">
+            <div class="item" onmouseleave="hoveroffProductos()">
+                <a href="/ingreso">
+                    <div class="icon"><img src="/static/icons/icons8_next_page.ico"></div>
+                    <div class="title"  onmouseenter="hoverOnProductos()"  ><span>Extranet</span></div>
+                </a>
+                
+                <ul id="sub-list-productos">
+                    <div class="item separator"></div>
+                    <li><a href="/ingreso" >Ingresar</a></li>
+                </ul>   
+
+            <div class="item separator"></div>
+
+    </div>
+</nav>
+{% endblock %}

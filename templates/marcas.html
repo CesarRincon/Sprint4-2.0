@@ -1,0 +1,29 @@
+{% extends "servicios.html" %}
+{% block title %}Gestion Marcas{% endblock %}
+{% block contents %}
+
+{% if session.rol == "SuperAdmin" %}
+    <h1>LISTA DE MARCAS {{long}}</h1>
+    <form action="" method="post" onsubmit="return confirmarBorrado()">
+        {{ frm.hidden_tag() }}
+         {{ frm.enviar }}  {{ frm.editar }}  {{ frm.eliminar }}
+    </form>
+    <br>
+<table id="tabla">
+    <thead>         
+        <tr>
+            <th>id Marca</th><th>Nombre</th><th>Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in range(long) %}
+        <tr><td>{{rows[i][0]}}</td><td>{{rows[i][1]}}</td><td>{{rows[i][2]}}</td></tr>
+
+    {% endfor %}
+        
+    </tbody>
+</table>
+{% else %}
+    <div class="centrado"><h1>Acceso Denegado</h1></div>
+{% endif %}
+{% endblock %}

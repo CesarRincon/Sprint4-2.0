@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/base.css" type="text/css" />
+    <script src="{{ url_for('static',filename='js/core.js')}}"></script>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    {% block grafico %}{% endblock %}
+    <link rel="shortcut icon" href="/static/icons/volkswagen_48px.png" type="image/x-icon">
+</head>
+<body class="grid-container">
+    <header class="header">
+        <ul class="menu">
+            <!-- esta es la barra superior-->
+            <div class="barra_superior">
+                {{ csrf_token }}
+                <li class="inicio"><a href="/servicios">Wolkswagen</a><img src="/static/icons/volkswagen_50px.png" alt="">
+                </li>
+    
+                <li class="shut"><a class="shutdown" href="/salir"><img src="/static/icons/shutdown_48px.png" alt=""></a>
+                </li>
+    
+                <li class="user"><a href="/usuarios/{{session.usuario}}">{% block rol %} {% endblock %}</a></li>
+            </div>
+        </ul>
+    </header>
+    {% block menu %}
+
+    {% endblock %}
+    <div class="main">
+        {% block contents %}
+            <!-- TITULO DE LA PAGINA -->
+    
+        {% endblock %} 
+    </div>
+
+    <script src="/static/js/menu.js"></script>
+</body>
+</html>

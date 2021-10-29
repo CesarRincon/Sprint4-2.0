@@ -1,0 +1,612 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    font-family: "Public Sans", sans-serif;
+    font-size: 1.2rem;
+    min-height: 100%;
+
+}
+
+.grid-container > *{
+    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 4px;
+    padding: 0px;
+    
+}
+
+.barra_superior{
+    grid-area: barra_superior;
+    /* background-color: #85aedd; */
+}
+
+.navbar{
+    grid-area: menu-collapsed;
+    background-color: #afd6af;
+}
+
+.main{
+    grid-area: main;
+    background-color: #f5f5f5;
+}
+
+
+
+.grid-container{
+    display: grid;
+    gap: 10px;
+    grid-template: 
+        "barra_superior barra_superior"    48px
+        "menu-collapsed main" 1px
+        "menu-collapsed main" auto/
+        1px auto;
+        
+}
+
+@media (min-width: 600px){
+    .grid-container{
+        grid-template:
+        "barra_superior barra_superior"48px
+        "menu-collapsed main" 50px
+        "menu-collapsed main" auto /
+         1px  auto;
+    }    
+}
+
+@media (min-width: 900px){
+    .grid-container{
+        grid-template:
+        "barra_superior barra_superior barra_superior" 48px
+        "menu-collapsed main   main" auto
+        "menu-collapsed main   main"  30px /
+        1px   auto   200px;
+    }
+}
+
+/* Barra superior */
+.barra_superior{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0c4c85;
+    z-index: 100;
+} 
+
+
+.barra_superior .inicio img{
+    height: 32px;
+    margin-top: 6px;
+    margin-right: 5px;
+    transform: translate(-5.5px, 0%);
+}
+
+.barra_superior li{
+    float: left;
+    display: flex;
+}
+
+.barra_superior li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.user:hover{
+    background-color: #3490ec;
+}
+
+.inicio{
+    background-color: #4a9ae9;
+}
+
+.barra_superior .user {
+    float: right;
+}
+
+.barra_superior .shut{
+    float: right;
+    transform: scale(0.7);
+  
+}
+
+.barra_superior a.shutdown{
+    height: 45px;
+    margin-bottom: 0px;
+    padding: 1px;
+}
+
+
+.barra_superior a.shutdown img{
+    margin-right: 10px;
+}
+
+.barra_superior .shut:hover{
+    filter: saturate(200%);
+}
+
+/* Fin de barra superior */
+
+/* Barra lateral */
+:root{
+    --width: 240px;
+    --padding: 10px;
+    --bgcolor: #0c4c85;
+    --hovercolor: rgb(9, 22, 49);
+    --width-collapsed: 50px;
+}
+
+body{
+    background-color: #dae3f5;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    margin-left: var(--width-collapsed);
+}
+
+.body-expanded{
+    margin-left: var(--width);
+}
+
+#main-container{
+    color: black;
+}
+
+#sidemenu{
+    background-color: var(--bgcolor);
+    color: white;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    
+}
+
+#sidemenu a{
+    color: white;
+    text-decoration: none;
+}
+
+/* AQUI EMPIEZA EL MENU HEADER*/
+
+#sidemenu #header{
+    box-sizing: border-box;
+    border-bottom: solid 1px var(--hovercolor);
+}
+
+#sidemenu #header #title{
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#sidemenu #header #title, #sidemenu #header #menu-btn{
+    vertical-align: middle;
+}
+
+#sidemenu #menu-btn{
+    float: right;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+#sidemenu #header #menu-btn{
+    display: inline-block;
+}
+
+#sidemenu #header #menu-btn{
+    cursor: pointer;
+    padding: 10px;
+    width: var(--width-collapsed);
+    box-sizing: border-box;
+}
+
+#sidemenu #header #menu-btn:hover{
+    background-color: var(--hovercolor);
+}
+
+#sidemenu #header #menu-btn .btn-hamburger{
+    background-color: #fff;
+    width: 100%;
+    height: 2px;
+    margin: 5px 0;
+}
+
+/* PERFIL DEL MENU */
+
+#sidemenu #perfil{
+    border-bottom: solid 1px var(--hovercolor);
+    /* padding: var(--padding) 0; */
+    text-align: center;
+}
+
+#sidemenu #perfil #foto{
+    box-sizing: border-box;
+    padding: var(--padding);
+    margin: 0 auto;
+}
+
+#sidemenu #perfil #foto img{
+    border-radius: 50%;
+    width: 60%;
+}
+
+#sidemenu #perfil #foto, #sidemenu #perfil #name{
+    font-size: 24px;
+    padding: var(--padding) 0;
+    overflow: hidden;
+}
+
+/* ITEMS DEL MENU */
+
+
+#sidemenu #menu-items{
+    overflow: hidden; 
+}
+
+#sidemenu #menu-items .item{
+    width: var(--width);
+}
+
+
+#sidemenu #menu-items .item .icon{
+    display: inline-block;
+}
+
+#sidemenu #menu-items .item .icon, 
+#sidemenu #menu-items .item .title{
+    font-size: 14px;
+    vertical-align: middle;
+    overflow: hidden;
+    display: inline-block;
+}
+
+#sidemenu #menu-items .item a{
+    display: block;
+}
+
+#sidemenu #menu-items .item a:hover{
+    background-color: var(--hovercolor);
+}
+
+#sidemenu #menu.items .item .icon{
+    box-sizing: border-box;
+    padding: var(--padding);
+    width: var(--width-collapsed);
+}
+
+#sidemenu #menu-items .item .icon img{
+    width: 70%;
+    margin-left: 4px;
+
+}
+
+#sidemenu #menu-items .item .title{
+    padding: var(--padding) 0;
+}
+
+#sidemenu #menu-items .item.separator{
+    height: 1px;
+    border-bottom: solid 1px var(--hovercolor);
+    margin: 1px 0;
+}
+
+.menu-expanded{
+    width: var(--width);
+    box-shadow: 0 0 10px rgba(
+        0, 0, 0, 0.5);
+        z-index: 100;
+}
+
+.menu-expanded #header #title{
+    display: inline-block;
+    width: calc(100%-50px);
+    margin-right: -5px;
+    padding: var(--padding);
+}
+
+.menu-expanded #header #title span{
+    width: calc(var(--width) - var(--width-collapsed) - 5px);
+    overflow: hidden;
+}
+
+.menu-expanded #perfil #foto{
+    width: 200px;
+}
+
+.menu-expanded #perfil #name{
+    width: 100%;
+}
+
+.menu-expanded #menu-items .item ul li{
+    list-style: none;
+    margin-left: 56px;
+    font-size: 15px;
+    padding: 2px;   
+}
+
+.menu-expanded #menu-items .item ul{
+    display: none;
+}
+
+.menu-collapsed #menu-items .item ul{
+    display: none;
+}
+
+.menu-collapsed{
+    width: var(--width-collapsed);
+    z-index: 100;
+}
+
+.menu-collapsed #header #title #foto{
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-collapsed #header #title{
+    display: none;
+}
+
+.menu-collapsed #perfil #name{
+    display: none;
+}
+
+.menu-collapsed .item{
+    width: 100px;
+}
+
+/* Fin de barra lateral */
+.main{
+    align-content: center;
+    text-align: center;
+    padding: 10px;
+}
+
+ /* AQUI COMIENZAN LOS ESTILOS DE FORMULARIO */
+
+ .content-form-proveedor{
+    max-width: 1170px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 1.5em;
+    
+}
+
+.content-form-proveedor h1{
+    text-align: center;
+}
+
+.formulario-wrapper{
+    box-shadow: 0 0 20px rgba(92, 91, 91, 0.685) ;
+    border-radius: 30px;
+}
+
+.formulario-wrapper >*{
+    padding: 1em;
+}
+
+.proveedores-form{
+    background-color: rgb(53, 71, 116);
+    color: white;
+    border-radius: 30px;
+}
+
+.proveedores-form form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.proveedores-form .block{
+grid-column: 1/3;
+} 
+
+.proveedores-form p{
+    margin: 0;
+    padding: 0.5em;
+}
+
+.proveedores-form form button, .proveedores-form input, .proveedores-form form textarea{
+    width: 100%;
+    padding: .7em;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-shadow: inset 1px 5px 20px rgba(63, 63, 65, 0.671);
+}
+
+.proveedores-form form .btn{
+    box-shadow: none;
+    background-color: rgb(38, 82, 201);
+    color: white;
+    padding: 1em;
+}
+.proveedores-form form .btn:hover{
+    background-color: rgb(43, 73, 172);
+   
+}
+
+/* ESTE ES EL PARA EL FORMULARIO DE CALIFICACION */
+.content-form-proveedor2{
+    max-width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 1.5em;
+    
+}
+
+.proveedores-form2{
+    background-color: rgb(53, 71, 116);
+    color: white;
+    border-radius: 30px;
+}
+
+.proveedores-form2 form {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.proveedores-form2 .block{
+grid-column: 1/2;
+} 
+
+.proveedores-form2 p{
+    margin: 0;
+    padding: 0.5em;
+}
+
+.proveedores-form2 form button, .proveedores-form2 input, .proveedores-form2 form textarea{
+    width: 100%;
+    padding: .7em;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-shadow: inset 1px 5px 20px rgba(63, 63, 65, 0.671);
+}
+
+.proveedores-form2 form .btn{
+    box-shadow: none;
+    background-color: rgb(38, 82, 201);
+    color: white;
+    padding: 1em;
+}
+.proveedores-form2 form .btn:hover{
+    background-color: rgb(43, 73, 172);
+   
+}
+
+/* AQUI TERMINA EL DISEÑO DE FORMULARIO PEQ */
+
+/* large screen */
+@media (min-width: 700PX){
+    body{
+       padding: 0 0.1rem; 
+    }
+
+    .proveedores-form form{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .proveedores-form .block{
+        grid-column: 3/3;
+        
+    }
+
+    .proveedores-form2 form{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .proveedores-form2 .block{
+        grid-column: 2/1;
+        
+    }
+}
+
+ /* DISEÑO DE LAS TABLAS */
+
+table{
+    background-color: white;
+    text-align: left;
+    border-collapse: collapse;
+    overflow-x: scroll;
+    margin: auto;
+    font-size: 14px;  
+}
+
+#tabla th{
+    padding: 15px;
+    width: 3px;
+}
+
+#tabla td{
+    padding: 5px;
+    
+}
+
+#tabla thead{
+    background-color: #1f6099;
+    border-bottom: solid 5px #b8b8b8;
+    color: white;
+}
+
+#tabla tr:nth-child(even){
+    background-color: #ddd;
+}
+
+#tabla tr:hover td{
+    background-color: #063358;
+    color: white;
+}
+
+/* CALIFICACIONES  */
+.txt-center {
+    text-align: center;
+  }
+.hide{
+    display: none;
+  }
+  
+.clear{
+    float: none;
+    clear: both;
+  }
+  
+.rating {
+
+    width: 100px;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+    margin: auto;
+}
+
+.rating > label {
+    float: right;
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 1.1em;
+    cursor: pointer;
+    color: #000;
+}
+
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input.radio-btn:checked ~ label {
+    color: transparent;
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label:before,
+.rating > input.radio-btn:checked ~ label:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+}
+
+

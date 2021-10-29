@@ -1,0 +1,52 @@
+{% extends "servicios.html" %}
+{% block title %}buscar producto{% endblock %}
+{% block contents %}
+<div>
+    <form action="/buscar/producto" method="POST" class="a" id="tabla">
+        <div align="center">
+            <tr>
+                <td><label for="buscar"> Buscar: </label></td>
+                <td><input type="search" name="bp" id=""></td>
+            </tr>
+        </div>
+    </form><br>
+    {% if resultado != "" %}
+    <table id="tabla">
+        <thead>
+            <tr>
+                <th>Id_producto</th>
+                <th>Id_linea</th>
+                <th>Id_proveedor</th>
+                <th>Lote</th>
+                <th>Codigo</th>
+                <th>Descripcion</th>
+                <th>Cantidad en bodega</th>
+                <th>serial_producto</th>
+                <th>Fecha Lote</th>
+                <th>Cantidad requerida</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for i in range (long) %}
+                <td>
+                    {{rows[i]}}
+                </td>
+                {% endfor %}
+            </tr>
+        </tbody>
+
+
+
+
+    </table>
+    {% for msg in get_flashed_messages() %}
+    <div align="center">
+        {{ msg }}
+        {% endfor %}
+
+        {% endif %}
+
+    </div>
+    {% endblock %}

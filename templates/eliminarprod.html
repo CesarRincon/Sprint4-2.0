@@ -1,0 +1,33 @@
+{% extends "servicios.html" %}
+{% block title %}Eliminar producto{% endblock %}
+{% block contents %}
+{% if rol == "SuperAdmin"%}
+<div class="content-form-proveedor2">
+    <h1>Eliminar Producto</h1><br>
+    <div class="formulario-wrapper">
+        <div class="proveedores-form2">
+            <form id="limpiarform" action="/eliminar/producto" method="POST">
+                {{ csrf_token }}
+
+                <p class="block">
+                    <label>Codigo del producto: </label>
+                    <input type="search" name="eliproduc" id="eliminar">
+                </p>
+
+                <p class="block">
+                    <input type="submit" class="btn" name="btnagr"  value="Eliminar">
+                </p>
+
+                {% for msg in get_flashed_messages() %}
+                    <div align="center">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+</div>
+{% else %}
+    <div class="centrado"><h1>Acceso Denegado</h1></div>
+{% endif %}
+{% endblock %}

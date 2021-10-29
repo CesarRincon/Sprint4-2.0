@@ -1,0 +1,69 @@
+{% extends "servicios.html" %}
+{% block title %}Registro de usuarios{% endblock %}
+{% block contents %}
+{% if session.rol == "SuperAdmin" or session.rol == "Admin" %}
+    <div>
+        <form action="" method="post">
+            {{ frm.hidden_tag() }}
+            <h1>CREACIÓN DE USUARIOS</h1>
+            <table>
+                <p>
+                    <tr><td>{{ frm.usuario.label }}</td>
+                    <td>{{ frm.usuario }}</td></tr>
+                    {% for error in frm.usuario.errors %}
+                        <div>
+                        {{ error }}
+                        </div>
+                        {% endfor %}
+                </p>
+                <p>
+                    <tr><td>{{ frm.password.label }}</td>
+                    <td>{{ frm.password }}</td></tr>
+                    {% for error in frm.password.errors %}
+                        <div>
+                        {{ error }}
+                        </div>
+                    {% endfor %}
+                </p>
+                <p>
+                    <tr><td>{{ frm.nombres.label }}</td>
+                    <td>{{ frm.nombres }}</td></tr>
+                    {% for error in frm.nombres.errors %}
+                        <div>
+                        {{ error }}
+                        </div>
+                    {% endfor %}
+                </p>
+                <p>
+                    <tr><td>{{ frm.apellidos.label }}</td>
+                    <td>{{ frm.apellidos }}</td></tr>
+                    {% for error in frm.apellidos.errors %}
+                        <div>
+                        {{ error }}
+                        </div>
+                    {% endfor %}
+                </p>
+                <p>
+                    <tr><td>{{ frm.rol.label }}</td>
+                    <td>{{ frm.rol }}</td></tr>
+                    {% for error in frm.rol.errors %}
+                        <div>
+                        {{ error }}
+                        </div>
+                    {% endfor %}
+                </p>                    
+                </table>
+            <br>
+            {% for msg in get_flashed_messages() %}
+            <div align="center">
+            {{ msg }}
+            </div >
+                {% endfor %}
+            <table align="center"><tr><td>{{ frm.enviar }}</td></tr></table>
+        </form>   
+    </div>
+{% else %}
+    <div class="centrado"><h1>Acceso Denegado</h1></div>
+{% endif %}
+{% endblock %}
+

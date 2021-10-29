@@ -1,0 +1,54 @@
+{% extends "servicios.html" %}
+
+{% block title %} Buscar Proveedor {% endblock %}
+
+{% block contents %}
+    {% if session.rol == "SuperAdmin" or session.rol == "UsuarioFinal" %}
+    <div id="buscar">
+        <form action="/buscar/proveedor", method="POST">
+            <label>Buscar: </label><input type="search" name="datos" required>
+
+        <button type="submit" name="submit_button" value="Buscar">Buscar</button>
+        <!-- <input type="submit" value="Buscar"> -->
+        <!-- <input onclick="mostrarForm();" type="button" value="Editar"> -->
+        </form>
+    </div>
+    <br>
+    <div>
+        <table id="tabla">
+            <thead>
+                <tr>
+                    <th>Cod</th>
+                    <th>Nombre</th>
+                    <th>Razón Social</th>
+                    <th>Domicilio</th>
+                    <th>Código Postal</th>
+                    <th>Localidad</th>
+                    <th>Provincia</th>
+                    <th>Pais</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Web</th>
+                    <th>Rut</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    {% for i in range (long) %}
+                    <td>{{row[i]}}</td>
+                     
+                    {% endfor %}
+                </tr>
+            </tbody>
+            
+
+        </table>
+        {% for msg in get_flashed_messages() %}
+        <div align="center">
+            {{ msg }}
+        </div>
+    {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}

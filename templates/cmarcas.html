@@ -1,0 +1,40 @@
+{% extends "servicios.html" %}
+{% block title %}Crear Marca{% endblock %}
+{% block contents %}
+<br><br><br>
+{% if session.rol == "SuperAdmin" %}
+<form action="/marca/crear" method="post">
+    {{ frm.hidden_tag() }}
+    <table align="center">
+    
+        <p>
+            <tr>
+                <td>{{ frm.nom_linea.label }}</td>
+                <td>{{ frm.nom_linea }}</td>
+            </tr>
+            
+        </p>
+        <p>
+            <tr>
+                <td>{{ frm.desc_linea.label }}</td>
+                <td>{{ frm.desc_linea }}</td>
+            </tr>
+        </p>    
+    </table>
+    <br>
+        {% for msg in get_flashed_messages() %}
+            <div align="center">
+            {{ msg }}
+            </div >
+        {% endfor %}
+    <table align="center">
+    <tr>
+        <td>{{ frm.enviar }}</td>
+    </tr>
+    </table>
+    
+</form>
+{% else %}
+    <div class="centrado"><h1>Acceso Denegado</h1></div>
+{% endif %}
+{% endblock %}

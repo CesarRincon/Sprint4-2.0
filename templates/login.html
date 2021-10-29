@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block cabeza %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/icons/volkswagen_48px.png" type="image/x-icon">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/css/login.css" type="text/css" />
+    {% endblock %}
+</head>
+{% block contenido %}
+<body>
+    
+    <div class="bodyContainer">
+        <ul>
+            <!-- Menu-->
+            <li class="inicio"><a href="/">Volkswagen</a><img src="/static/icons/volkswagen_50px.png" alt=""></li>
+        </ul>
+
+
+        <div class="container1">
+            {{ csrf_token }}
+            <div class="caja">
+                <!--Contenedor de imagen-->
+                <img src="/static/images/taos-volkswagen-colombia.jpg" alt="">
+            </div>
+
+            <div class="cajalogin">
+                <img class="logo" src="/static/images/e15015231c034be91405872269f8b0fe.jpeg" alt="">
+
+                <h2>Login</h2>
+
+                <div class="fields">
+                    <form action="/ingreso" method="POST">
+                        <div class="datos">
+                            <i><img src="/static/icons/user_50px.png" alt=""></i>
+                            <input type="usuario" placeholder="Usuario" name="nombre" autocomplete="off">
+                        </div>
+
+                        <div class="datos">
+                            <i><img src="/static/icons/icons8_password.ico" alt=""></i>
+                            <input type="password" placeholder="Password" name="psw">
+                        </div>
+                        <button class="btnlogin" type="submit" value="login">Login</button>
+                        {% for msg in get_flashed_messages() %}
+                        <div class="msg">
+                            <h4>{{ msg }}</h4>
+                        </div>
+                        {% endfor %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}

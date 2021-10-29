@@ -1,0 +1,46 @@
+{% extends "servicios.html" %}
+{% block title %}Eliminar Marca{% endblock %}
+{% block contents %}
+<br><br><br>
+{% if session.rol == "SuperAdmin" %}
+<form action="/marca/eliminar" method="post">
+    {{ frm.hidden_tag() }}
+    <table align="center">
+        <p>
+            <tr>
+                <td>{{ frm.nom_linea.label }}</td>
+                <td>{{ frm.nom_linea }}</td>
+            </tr> 
+        </p>
+    </table>
+    <br>
+        {% for msg in get_flashed_messages() %}
+            <div align="center">
+            {{ msg }}
+            </div >
+        {% endfor %}
+    <table align="center">
+    <tr>
+        <td>{{ frm.eliminar }}</td>
+    </tr>
+    </table>
+</form>
+<br>
+<table id="tabla">
+    <thead>         
+        <tr>
+            <th>id Marca</th><th>Nombre</th><th>Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in range(long) %}
+        <tr><td>{{rows[i][0]}}</td><td>{{rows[i][1]}}</td><td>{{rows[i][2]}}</td></tr>
+
+    {% endfor %}
+        
+    </tbody>
+</table>
+{% else %}
+    <div class="centrado"><h1>Acceso Denegado</h1></div>
+{% endif %}
+{% endblock %}

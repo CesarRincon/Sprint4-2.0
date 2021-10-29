@@ -1,0 +1,90 @@
+{% extends "servicios.html" %}
+{% block title %}Editar producto{% endblock %}
+{% block contents %}
+{% if rol == "SuperAdmin" or rol == "Admin"   %}
+
+<div class="content-form-proveedor">
+    <h1>Agregar Producto</h1><br>
+    <div class="formulario-wrapper">
+        <div class="proveedores-form">
+            <form id="limpiarform" action="/crear/proveedor" method="POST">
+                {{ csrf_token }}
+
+                <p>
+                    <label>Codigo:</label>
+                    <input type="number" name="codigo" id="codigo" value="{{codigo}}">
+                </p>
+                
+                <p>
+                    <label>Marca:</label><br>
+                    <select name="selectlinea" id="">
+                        <option value="value0" >--Escoja una marca--</option>
+                    {% for i in range(longl) %}
+                        <option value="{{rowl[i]['id_linea']}}">{{rowl[i]['nom_linea']}}</option>
+                    {% endfor %}
+                    </select> 
+                </p>
+
+                <p>
+                    <label>Proveedor: </label><br>
+                    <select name="selectprov" id="">
+                        <option value="value0" selected>--Escoja un Proveedor--</option>
+                    {% for i in range(longp) %}
+                        <option value="{{rowp[i]['id_proveedor']}}">{{rowp[i]['nom_proveedor']}}</option>
+                    {% endfor %}
+                    </select>
+                </p>
+
+                <p>
+                    <label>Lote:</label>
+                    <input type="number" name="lote" id="lote" min="1" value="{{lote}}">
+                </p>
+
+                <p>
+                    <label>Descripcion:</label>
+                    <textarea name="destxt" id="destxt" placeholder="color,tamaño,peso,funcionalidad,año,ect" data="{{descrp}}"></textarea>
+                </p>
+
+                <p>
+                    <label>Serial del producto:</label>
+                    <input type="number" name="serpod" id="serprod"  min="1" value="{{serialprod}}">
+                </p>
+
+                <p>
+                    <label>Fecha Lote:</label>
+                    <input type="date" name="fechlot" id="fechlot"  min="1" value="{{fechaLote}}">
+                </p>
+
+                <p>
+                    <label> Min:</label>
+                    <input type="number" name="num2" id="num2" min="1" value="{{cantRequerida}}">
+                </p>
+
+                <p>
+                    <label>Cantidad en bodega:</label>
+                    <input type="number" name="num1" id="num1" required min="1" value="{{cantBodega}}">
+                </p>
+
+                <p>
+                    <label>precio del prod:</label>
+                    <input type="number" name="precio" id="precio" value="{{precioProd}}">
+                </p>
+
+                <p class="block">
+                    <input class="btn" type="submit" name="btnagr"  value="Agregar">
+                </p>
+
+                {% for msg in get_flashed_messages() %}
+                    <div align="center">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+</div>
+
+{% else %}
+    <div class="centrado"><h1>Acceso Denegado</h1></div>
+{% endif %}
+{% endblock %}
