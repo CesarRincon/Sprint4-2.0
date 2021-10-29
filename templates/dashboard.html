@@ -3,6 +3,34 @@
 {% block contents %}
 {% if session.rol == "SuperAdmin" or session.rol == "Admin" %}
 {% block grafico %}
+    <div align="center">
+        <script type="text/javascript">
+            var sa= JSON.parse('{{sa | tojson | safe}}');
+            var a= JSON.parse('{{a | tojson | safe}}');
+            var uf= JSON.parse('{{uf | tojson | safe}}');
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+      
+              var data = google.visualization.arrayToDataTable([
+              ['ROL', 'No. de Usuarios'],
+              ['SuperAdmin',     sa],
+              ['Admin',     a],
+              ['UsuarioFinal', uf],
+              ]);
+      
+              var options = {
+                title: 'Grafico de Usuarios',
+                is3D: true,
+              };
+      
+              var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+              chart.draw(data, options);
+            }
+             
+          </script>
+    </div>
+
 
     <div align="center">
         <script type="text/javascript">
@@ -36,7 +64,7 @@
         </script>
     </div>
 {% endblock %}
-    
+    <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
     <div id="chart_div" align="center" style="width: 900px; height: 500px;"></div>
 
 {% else %}
