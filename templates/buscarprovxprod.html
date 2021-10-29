@@ -17,10 +17,11 @@
         <table  id="tabla">
             <thead>
                 <tr>
-                <th>Id_proveedor</th>
+                <th>Id proveedor</th>
                 <th>Nombre proveedor</th>
-                <th>Id_linea</th>
-                <th>Id_Producto</th>           
+                <th>Id Marca</th>
+                <th>Nombre Marca</th>
+                <th>Id Producto</th>           
                 </tr>
             </thead> 
             <tbody>
@@ -34,6 +35,9 @@
                     </td>
                     <td>
                         {{rows[i]['id_linea']}}
+                    </td>
+                    <td>
+                        {{rows[i]['nom_linea']}}
                     </td>
                     <td>
                         {{rows[i]['nom_linea']}}

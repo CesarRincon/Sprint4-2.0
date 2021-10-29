@@ -1,18 +1,18 @@
 {% extends "servicios.html" %}
-{% block title %}Visualizar usuario{% endblock %}
+{% block title %}Stock menor al permitido{% endblock %}
 {% block contents %}
 
 <table id="tabla">
     <h3>LISTADO DE PRODUCTOS CON CANTIDAD MENOR A LA MINIMA REQUERIDA</h3><br>
     <thead>         
         <tr>
-            <th>Id</th><th>Codigo linea</th><th>Productos</th><th>Stock</th><th>Cantidad minima requerida</th>
+            <th>Codigo</th><th>Codigo linea</th><th>Productos</th><th>Stock</th><th>Cantidad minima requerida</th>
         </tr>
     </thead>
     <tbody>
         {% for i in range(long) %}
             {% if rows[i]['stock']<rows[i]['cant_requerida'] %}
-                <tr><td>{{rows[i]['id_producto']}}</td><td>{{rows[i]['id_linea']}}</td><td>{{rows[i]['nom_linea']}}</td><td>{{rows[i]['stock']}}</td><td>{{rows[i]['cant_requerida']}}</td></tr>
+                <tr><td>{{rows[i]['codigo']}}</td><td>{{rows[i]['id_linea']}}</td><td>{{rows[i]['nom_linea']}}</td><td>{{rows[i]['stock']}}</td><td>{{rows[i]['cant_requerida']}}</td></tr>
             {% endif %}
         {% endfor %}
         

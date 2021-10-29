@@ -1,10 +1,10 @@
 {% extends "servicios.html" %}
-{% block title %}Editar producto{% endblock %}
+{% block title %}Crear producto{% endblock %}
 {% block contents %}
 {% if rol == "SuperAdmin" or rol == "Admin"   %}
 
 <div class="content-form-proveedor">
-    <h1>Agregar Producto</h1><br>
+    <h1>Crear Producto</h1><br>
     <div class="formulario-wrapper">
         <div class="proveedores-form">
             <form id="limpiarform" action="/crear/producto" method="POST">
@@ -12,15 +12,22 @@
 
                 <p>
                     <label>Codigo:</label>
-                    <input type="number" name="codigo" id="codigo" value="{{codigo}}">
+                    <input type="number" name="codigo" id="codigo" value="{{codigo}}" required>
                 </p>
                 
                 <p>
                     <label>Marca:</label><br>
                     <select name="selectlinea" id="">
-                        <option value="value0" >--Escoja una marca--</option>
+                    {% if id_linea==0 %}
+                        <option value=0 >--Escoja una marca--</option>
+                    {% endif %}
                     {% for i in range(longl) %}
+                        {% if  id_linea == rowl[i]['id_linea'] %}
+                        <option value="{{rowl[i]['id_linea']}}" selected>{{rowl[i]['nom_linea']}}</option>
+            
+                        {% else %}
                         <option value="{{rowl[i]['id_linea']}}">{{rowl[i]['nom_linea']}}</option>
+                        {% endif %}
                     {% endfor %}
                     </select> 
                 </p>
@@ -28,9 +35,15 @@
                 <p>
                     <label>Proveedor: </label><br>
                     <select name="selectprov" id="">
-                        <option value="value0" selected>--Escoja un Proveedor--</option>
+                        {% if proveedor==0 %}
+                        <option value=0>--Escoja un Proveedor--</option>
+                        {% endif %}
                     {% for i in range(longp) %}
-                        <option value="{{rowp[i]['id_proveedor']}}">{{rowp[i]['nom_proveedor']}}</option>
+                        {% if rowp[i]['id_proveedor']==Proveedor %}
+                        <option value="{{rowp[i]['id_proveedor']}}" selected>{{rowp[i]['nom_proveedor']}} </option>
+                        {% else %}
+                        <option value="{{rowp[i]['id_proveedor']}}">{{rowp[i]['nom_proveedor']}} </option>
+                        {% endif %}
                     {% endfor %}
                     </select>
                 </p>
@@ -42,7 +55,7 @@
 
                 <p>
                     <label>Descripcion:</label>
-                    <textarea name="destxt" id="destxt" placeholder="color,tamaño,peso,funcionalidad,año,ect" data="{{descrp}}"></textarea>
+                    <textarea name="destxt" id="destxt" placeholder="color,tamaño,peso,funcionalidad,año,ect" >{{descrp}}</textarea>
                 </p>
 
                 <p>

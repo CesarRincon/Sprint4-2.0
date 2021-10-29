@@ -1,10 +1,9 @@
 {% extends "servicios.html" %}
 {% block title %}Listado de Calificaciones{% endblock %}
 {% block contents %}
-<br><br><br>
 {% if session.rol == "SuperAdmin" or session.rol == "UsuarioFinal" %}
-<div class="centrado"><h1>TOTAL CALIFICACIONES {{long}}</h1></div>
-<table align="center" cellspacing="2" cellpadding="20" border="1" bgcolor=dddddd>
+<h1>TOTAL CALIFICACIONES {{long}}</h1><br>
+<table id="tabla">
     <thead>         
         <tr>
             <th>No</th><th>Id Linea</th><th>Nombre Linea</th><th>Calificacion</th><th>Observaciones</th>

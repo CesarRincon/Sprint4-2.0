@@ -35,7 +35,7 @@
                     <label>Marca: </label><br>
                     <select name="selectlinea" id="">
                         {% for i in range(longl) %}
-                        {% if rowl[i]['id_proveedor']==row[2] %}
+                        {% if rowl[i]['id_linea']==row[1] %}
                         <option value="{{rowl[i]['id_linea']}}" selected>{{rowl[i]['nom_linea']}}</option>
             
                         {% else %}
@@ -98,12 +98,6 @@
                 <p class="block">
                     <input type="submit" class="btn" name="btnagr"  value="Editar">
                 </p>
-
-                {% for msg in get_flashed_messages() %}
-                    <div align="center">
-                        {{ msg }}
-                    </div>
-                {% endfor %}
             </form>
         </div>
     </div>

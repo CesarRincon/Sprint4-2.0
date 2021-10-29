@@ -20,6 +20,27 @@ def inicio():
     global nom,rol
     nom=""
     rol=""
+    provee_buscado2 = ""
+    row2=[]
+    rowl=rowp=[]
+    longl=longp=0
+    proveedor=0
+    id_linea=0
+    codigo=""
+    lote=""
+    descrp=""
+    serialprod=""
+    fechaLote=""
+    cantRequerida=""
+    cantBodega=""
+    precioProd=""
+    row=[]
+    rowbp=[]
+    longbp=0    
+    sw=0
+    rowsl=[]
+    longl=0
+    nombreante=""
     return render("inicio.html",nom=nom,rol=rol)
 
 @app.route("/salir")
@@ -617,8 +638,8 @@ def list_proveedores():
 
 rowl=rowp=[]
 longl=longp=0
-proveedor=""
-id_linea=""
+proveedor=0
+id_linea=0
 codigo=""
 lote=""
 descrp=""
@@ -635,6 +656,16 @@ def crearproducrtos():
     global proveedor,id_linea,codigo,descrp,serialprod,fechaLote, cantRequerida, cantBodega,precioProd,lote
     global nom,rowl,rowp,longl,longp
     global sw
+    id_linea=0
+    proveedor= 0
+    lote= ""
+    codigo=""
+    descrp=""
+    serialprod=""
+    fechaLote=""
+    cantRequerida=""
+    cantBodega=""
+    precioProd=""
     if 'usuario' in session:
         if request.method=="GET":
             with sqlite3.connect(rutadb) as con: 
@@ -649,8 +680,8 @@ def crearproducrtos():
 
             return render("agregarProducto.html",proveedor=proveedor,id_linea=id_linea,codigo=codigo,descrp=descrp,serialprod=serialprod,fechaLote=fechaLote, cantRequerida=cantRequerida, cantBodega=cantBodega,precioProd=precioProd,lote=lote,nom=nom,rol=rol,rowl=rowl,rowp=rowp,longl=longl,longp=longp)
         else:
-                id_linea=request.values["selectlinea"]#id_linea
-                proveedor= request.values["selectprov"]#id_proveedor
+                id_linea=int(request.values["selectlinea"])#id_linea
+                proveedor= int(request.values["selectprov"])#id_proveedor
                 lote= request.form["lote"]#lote
                 codigo=request.form["codigo"]#codigo
                 descrp=request.form["destxt"]#descrp
@@ -668,18 +699,13 @@ def crearproducrtos():
                 if row:
                     flash("El codigo ya existe ")
                     codigo=""
-                    
-                   
-
-                        
-                
                 else:
-                    if id_linea!="value0" and  proveedor!= "value0":
+                    if id_linea!=0 and  proveedor!= 0:
                         cur.execute("INSERT INTO productos ( id_linea, id_proveedor, lote, codigo,descrip_producto,stock,serial_producto,fecha_lote,cant_requerida,precio) VALUES(?,?,?,?,?,?,?,?,?,?)",
                         [id_linea,proveedor,lote,codigo,descrp,cantBodega,serialprod,fechaLote,cantRequerida,precioProd])
                         con.commit()
-                        proveedor=""
-                        id_linea=""
+                        proveedor=0
+                        id_linea=0
                         codigo=""
                         lote=""
                         descrp=""
@@ -690,9 +716,9 @@ def crearproducrtos():
                         precioProd=""
                         flash("Guardado con exito")
                     else:
-                        if id_linea=="value0":
+                        if id_linea==0:
                             flash("Falta marca ")
-                        elif proveedor=="value0":
+                        elif proveedor==0:
                             flash("Falta proveedor")
 
                 return render("agregarProducto.html",proveedor=proveedor,id_linea=id_linea,codigo=codigo,descrp=descrp,serialprod=serialprod,fechaLote=fechaLote, cantRequerida=cantRequerida, cantBodega=cantBodega,precioProd=precioProd,lote=lote,nom=nom,rol=rol,rowl=rowl,rowp=rowp,longl=longl,longp=longp)
