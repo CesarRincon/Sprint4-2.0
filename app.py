@@ -484,7 +484,7 @@ def crearProve():
             return render("crearProvee.html", nom=nom, rol=rol)
 
         else:
-            with sqlite3.connect("inventario.db") as con:
+            with sqlite3.connect(rutadb) as con:
                 cur=con.cursor()
 
             if request.form["submit_button"] == "Guardar":
@@ -533,7 +533,7 @@ def delproveedor():
     if 'usuario' in session:
         if request.method == "GET":
     
-            with sqlite3.connect("inventario.db") as con:
+            with sqlite3.connect(rutadb) as con:
                 cur = con.cursor()
                 cur.execute("SELECT * FROM proveedor")
                 con.commit()
@@ -545,7 +545,7 @@ def delproveedor():
         else:
             dato = request.form["eliminarp"]
             dato = int(dato)
-            with sqlite3.connect("inventario.db") as con:
+            with sqlite3.connect(rutadb) as con:
                 cur = con.cursor()
                 cur.execute("DELETE FROM proveedor WHERE id_proveedor=?",[dato])
                 con.commit()
@@ -555,7 +555,7 @@ def delproveedor():
                 else:
                     flash("Proveedor no encontrado")
             
-            with sqlite3.connect("inventario.db") as con:
+            with sqlite3.connect(rutadb) as con:
                 cur = con.cursor()
                 cur.execute("SELECT * FROM proveedor")
                 con.commit()

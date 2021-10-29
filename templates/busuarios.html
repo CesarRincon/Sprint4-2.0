@@ -70,7 +70,7 @@
                 <br>
                 <table align="center">
                     <tr><td>{{ frm1.editar }}</td>
-                        {% if rol == "SuperAdmin" %}
+                        {% if session.rol == "SuperAdmin" %}
                             <td>{{ frm1.eliminar }}</td></tr>
                         {% endif %}
                 </table>
