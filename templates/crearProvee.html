@@ -2,7 +2,7 @@
 
 {% block title %} Crear Proveedor {% endblock %}
 {% block contents %}
-
+{% if session.rol == "SuperAdmin" %}
 <div class="content-form-proveedor">
     <h1>Crear Proveedor</h1><br>
     <div class="formulario-wrapper">
@@ -75,5 +75,7 @@
                 {% endfor %}
             </form>
         </div>
-
+{% else %}
+    <div class="centrado"><h1>Acceso Denegado</h1></div>
+{% endif %}
 {% endblock %}
