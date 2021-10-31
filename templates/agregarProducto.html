@@ -50,41 +50,41 @@
 
                 <p>
                     <label>Lote:</label>
-                    <input type="number" name="lote" id="lote" min="1" value="{{lote}}">
+                    <input type="number" name="lote" id="lote" min="1" value="{{lote}}" required>
                 </p>
 
                 <p>
                     <label>Descripcion:</label>
-                    <textarea name="destxt" id="destxt" placeholder="color,tamaño,peso,funcionalidad,año,ect" >{{descrp}}</textarea>
+                    <textarea name="destxt" id="destxt" placeholder="color,tamaño,peso,funcionalidad,año,ect" required>{{descrp}}</textarea>
                 </p>
 
                 <p>
                     <label>Serial del producto:</label>
-                    <input type="number" name="serpod" id="serprod"  min="1" value="{{serialprod}}">
+                    <input type="number" name="serpod" id="serprod"  min="1" value="{{serialprod}}" required>
                 </p>
 
                 <p>
                     <label>Fecha Lote:</label>
-                    <input type="date" name="fechlot" id="fechlot"  min="1" value="{{fechaLote}}">
+                    <input type="date" name="fechlot" id="fechlot"  min="1" value="{{fechaLote}}" required>
                 </p>
 
                 <p>
                     <label> Min:</label>
-                    <input type="number" name="num2" id="num2" min="1" value="{{cantRequerida}}">
+                    <input type="number" name="num2" id="num2" min="1" value="{{cantRequerida}}" required>
                 </p>
 
                 <p>
                     <label>Cantidad en bodega:</label>
-                    <input type="number" name="num1" id="num1" required min="1" value="{{cantBodega}}">
+                    <input type="number" name="num1" id="num1" required min="1" value="{{cantBodega}}" required>
                 </p>
 
                 <p>
                     <label>precio del prod:</label>
-                    <input type="number" name="precio" id="precio" value="{{precioProd}}">
+                    <input type="number" name="precio" id="precio" value="{{precioProd}}" required>
                 </p>
 
                 <p class="block">
-                    <input class="btn" type="submit" name="btnagr"  value="Agregar">
+                    <input class="btn" type="submit" name="btnagr"  value="Agregar" required>
                 </p>
 
                 {% for msg in get_flashed_messages() %}

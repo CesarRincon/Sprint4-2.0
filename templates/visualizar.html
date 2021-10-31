@@ -2,7 +2,6 @@
     {% extends "servicios.html" %}
 {% block title %}Visualizar Producto{% endblock %}
 {% block contents %}
-{% if session.rol == "SuperAdmin" or session.rol == "Admin" or session.rol == "SuperAdmin" %}
         <div>
             <table  id="tabla" class="a">
                 <thead>
@@ -46,8 +45,6 @@
                 </tbody>
             </table>
         </div>
-
-    {% endif %}
 {% endblock %}
 
     

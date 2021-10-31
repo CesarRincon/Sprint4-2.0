@@ -66,33 +66,33 @@
 
                 <p>
                     <label>Descripcion:</label>
-                    <textarea name="destxt" id="destxt" value={{row[5]}} placeholder="Desea cambiar la descripcion escriba aqui"> {{row[5]}}
+                    <textarea name="destxt" id="destxt" value={{row[5]}} placeholder="Desea cambiar la descripcion escriba aqui" required> {{row[5]}}
                     </textarea>
                 </p>
 
                 <p>
                     <label>Cantidad en bodega:</label>
-                    <input type="number" name="num1" id="num1" required min="1" value={{row[6]}}>
+                    <input type="number" name="num1" id="num1" required min="1" value={{row[6]}} required>
                 </p>
 
                 <p>
                     <label>Serial del producto:</label>
-                    <input type="number" name="serpod" id="serprod" min="1" value={{row[7]}}>
+                    <input type="number" name="serpod" id="serprod" min="1" value={{row[7]}} required>
                 </p>
 
                 <p>
                     <label>Fecha Lote:</label>
-                    <input type="date" name="fechlot" id="fechlot" min="1" value={{row[8]}}>
+                    <input type="date" name="fechlot" id="fechlot" min="1" value={{row[8]}} required>
                 </p>
 
                 <p>
                     <label> Min:</label>
-                    <input type="number" name="num2" id="num2" min="1" value={{row[9]}}>
+                    <input type="number" name="num2" id="num2" min="1" value={{row[9]}} required>
                 </p>
 
                 <p>
                     <label>precio del prod:</label>
-                    <input type="number" name="precio" id="precio" value={{row[10]}}>
+                    <input type="number" name="precio" id="precio" value={{row[10]}} required>
                 </p>
 
                 <p class="block">
